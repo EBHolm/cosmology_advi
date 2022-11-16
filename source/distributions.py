@@ -37,7 +37,9 @@ class MultivariateUniform(dist.Distribution):
             self.dists.append(dist.Uniform(bound[0], bound[1]))
             self.logprob += -jnp.log(bound[1] - bound[0])
 
-    def sample(self, key, sample_shape=(3,)): # NB: Hardcoded 3 uniforms here!
+    def sample(self, key, sample_shape=None):
+        if not sample_shape:
+            sample_shape = (self.boundaries.shape[0],)
         out = jnp.zeros(sample_shape)
         for idx_sample, dist in enumerate(self.dists):
             out = out.at[idx_sample].set(dist.sample(key))
