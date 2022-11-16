@@ -22,7 +22,6 @@ class HypercubeConstraint(dist.constraints.Constraint):
             (self.lower_bound + self.upper_bound) / 2, jax.numpy.shape(prototype)
         )
 
-# Also found in /source/custom_distributions.py
 class MultivariateUniform(dist.Distribution):
     # https://num.pyro.ai/en/stable/_modules/numpyro/distributions/distribution.html#Distribution
     def __init__(self, boundaries, validate_args=None):

@@ -69,7 +69,7 @@ for idx_step in range(N_steps):
 
 # Save output
 import pickle
-filename_base = f'mock_data'
+filename_base = os.path.split(__file__)[-1][:-3]
 file_idx = 0
 while os.path.isfile(os.path.join(pwd, f'../output/{filename_base}_{file_idx}.pickle')):
     file_idx += 1
